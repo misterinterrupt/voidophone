@@ -15,6 +15,7 @@ voidophone/local_settings.py
 voidophone/production_settings.py
 fabfile.py
 passenger_wsgi.py
+phonevoid.sqlite3
 
 # OS generated files #
 ######################
