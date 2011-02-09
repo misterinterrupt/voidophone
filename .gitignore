@@ -11,7 +11,7 @@ logs/
 
 # Specific files #
 ##################
-voidophone/local_setings.py
+voidophone/local_settings.py
 fabfile.py
 passenger_wsgi.py
 
