@@ -84,12 +84,12 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.sites',
     'django.contrib.messages',
-    'south',
+    #'south',
     # Uncomment the next line to enable the admin:
     # 'django.contrib.admin',
 )
 
 try:
-    from local_settings import *
+    from voidophone.local_settings import *
 except ImportError:
     pass
