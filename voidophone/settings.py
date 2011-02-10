@@ -90,6 +90,6 @@ INSTALLED_APPS = (
 )
 
 try:
-    from voidophone.local_settings import *
+    from local_settings import *
 except ImportError:
     pass
