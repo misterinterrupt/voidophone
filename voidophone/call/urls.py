@@ -1,5 +1,5 @@
 from django.conf.urls.defaults import *
-from call.views import index, listen
+from voidophone.call.views import index, listen
 urlpatterns = patterns('',
     #home
     url(r'^/?$', index, name='call_index'),
