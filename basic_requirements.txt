@@ -1,6 +1,10 @@
 Django==1.2.4
 Fabric==0.9.3
+-e git://github.com/soundcloud/python-api-wrapper.git@f3a249e60e8bbff805533f1885463d40f910bcba#egg=SoundCloudAPI-0.1-py2.6-dev
+configobj==4.7.2
+nose==1.0.0
 paramiko==1.7.6
 pycrypto==2.3
+simplejson==2.1.3
 twilio==2.0.6
 wsgiref==0.1.2
