@@ -5,21 +5,31 @@ import scapi
 MP3_URL = 'replace_me.mp3'
 
 def index(request):
-    response = twilio.Response()
-    response.append(twilio.Say("rmYochuharuptatvheoieteinresidbydveter.", voice=twilio.Say.MAN, 
+    r = twilio.Response()
+    r.append(twilio.Say('rmYochuharuptatvheoieteinresidbydveter.', voice=twilio.Say.MAN, 
         language=twilio.Say.ENGLISH, loop=10))
-    response.append(twilio.Say("You have reached the void by misterinterrupt.", voice=twilio.Say.WOMAN, 
+    r.append(twilio.Say('You have reached the void by misterinterrupt.', voice=twilio.Say.WOMAN, 
         language=twilio.Say.ENGLISH))
-    response.append(twilio.Gather())
-    return HttpResponse(response)
-    
+    g = r.append(twilio.Gather(action='call_process_index', method='GET', numDigits=10))
+    g.append(twilio.Say('Press 1 to listen or press 2 to record'))
+    return HttpResponse(r)
+
+def process_index(request):
+    r = twilio.Response()
+    if request.get('Digits') == 1:
+        r.append(twilio.Redirect('call_listen'))
+    if request.get('Digits') == 2:
+        r.append(twilio.Redirect('call_record'))
+    r.append(twilio.Say('Ok.'))
+    return HttpResponse(r)
+
 def listen(request):
-    response = twilio.Response()
-    response.addPlay(MP3_URL)
-    return HttpResponse(response)
+    r = twilio.Response()
+    r.addPlay(MP3_URL)
+    return HttpResponse(r)
     
 def record(request):
-    response = twilio.Response()
-    response.append(twilio.Say('Please record a sound for oblivion.', voice=twilio.Say.WOMAN, 
+    r = twilio.Response()
+    r.append(twilio.Say('Please record a sound for oblivion.', voice=twilio.Say.WOMAN, 
         language=twilio.Say.ENGLISH))
-    response.append(twilio.Record())
+    r.append(twilio.Record())
