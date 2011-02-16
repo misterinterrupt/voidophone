@@ -6,8 +6,8 @@ MP3_URL = 'replace_me.mp3'
 
 def index(request):
     r = twilio.Response()
-    r.append(twilio.Say('rmYochuharuptatvheoieteinresidbydveter.', voice=twilio.Say.MAN, 
-        language=twilio.Say.ENGLISH, loop=10))
+    r.append(twilio.Say('rinresidbydvetemYochuharuptatvheoieter', voice=twilio.Say.MAN, 
+        language=twilio.Say.ENGLISH, loop=3))
     r.append(twilio.Say('You have reached the void by misterinterrupt.', voice=twilio.Say.WOMAN, 
         language=twilio.Say.ENGLISH))
     g = r.append(twilio.Gather(action='call_process_index', method='GET', numDigits=10))
