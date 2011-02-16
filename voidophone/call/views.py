@@ -2,7 +2,7 @@ from django.http import HttpResponse
 import twilio
 import scapi
 
-MP3_URL = 'http://soundcloud.com/misterinterrupt/spectralis/download'
+MP3_URL = 'http://soundcloud.com/misterinterrupt/spectralis/download.mp3'
 
 def index(request):
     return HttpResponse("Call Index")
