@@ -1,4 +1,5 @@
 from django.http import HttpResponse
+from django.core.urlresolvers import reverse
 import twilio
 import scapi
 
@@ -12,16 +13,18 @@ def index(request):
         language=twilio.Say.ENGLISH))
     g = r.append(twilio.Gather(action='call_process_index', method='GET', numDigits=10))
     g.append(twilio.Say('Press 1 to listen or press 2 to record'))
-    return HttpResponse(r)
+    return HttpResponse(r.__repr__())
 
 def process_index(request):
     r = twilio.Response()
-    if request.get('Digits') == 1:
-        r.append(twilio.Redirect('call_listen'))
-    if request.get('Digits') == 2:
+    if request.GET['Digits'] == 1:
+        r.append(twilio.Redirect(reverse('call_listen')))
+    elif request.GET['Digits'] == 2:
         r.append(twilio.Redirect('call_record'))
+    else:
+        r.append(twilio.Redirect('call_index'))
     r.append(twilio.Say('Ok.'))
-    return HttpResponse(r)
+    return HttpResponse(r.__repr__())
 
 def listen(request):
     r = twilio.Response()
@@ -33,3 +36,4 @@ def record(request):
     r.append(twilio.Say('Please record a sound for oblivion.', voice=twilio.Say.WOMAN, 
         language=twilio.Say.ENGLISH))
     r.append(twilio.Record())
+    return HttpResponse(r)
