@@ -3,7 +3,7 @@ from django.core.urlresolvers import reverse
 import twilio
 import scapi
 
-MP3_URL = 'replace_me.mp3'
+MP3_URL = 'http://soundcloud.com/misterinterrupt/02-suffocation-erruption-mp3/stream'
 
 def index(request):
     r = twilio.Response()
